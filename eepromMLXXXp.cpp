@@ -20,9 +20,9 @@ int ArduboyEeprom::begin(unsigned int start, uint16_t userID, uint8_t sketchID, 
   }
 
   // indicate area was allocated by setting user ID and sketch ID
-  EEPROM.write(start, userID >> 8);
-  EEPROM.write(start + 1, userID & 0xFF);
-  EEPROM.write(start + 2, sketchID);
+  EEPROM.update(start, userID >> 8);
+  EEPROM.update(start + 1, userID & 0xFF);
+  EEPROM.update(start + 2, sketchID);
   return EEPROM_ALLOCATED;
 }
 
@@ -35,7 +35,7 @@ boolean ArduboyEeprom::write(unsigned int address, uint8_t data) {
     return false;
   }
 
-  EEPROM.write(eeStart + address, data);
+  EEPROM.update(eeStart + address, data);
   return true;
 }
 
@@ -60,7 +60,7 @@ boolean ArduboyEeprom::write(unsigned int address, uint8_t *buffer, size_t size)
 
   end += eeStart;
   for (unsigned int i = eeStart + address; i < end; i++) {
-    EEPROM.write(i, *buffer++);
+    EEPROM.update(i, *buffer++);
   }
   return true;
 }
