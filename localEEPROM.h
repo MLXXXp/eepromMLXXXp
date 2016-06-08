@@ -11,6 +11,8 @@
 // This is the start address for the block of EEPROM space used by
 // this sketch, in decimal.
 // This must be set so that areas used by all desired sketches don't overlap.
+// When determining the size of the area used by a sketch, 3 must be added to
+// SKETCH_EEPROM_SIZE to account for a header.
 #define MLXXXP_EEPROM_START 992
 
 // The combination of user ID and sketch ID must be unique amongst all

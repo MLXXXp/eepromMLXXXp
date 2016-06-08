@@ -5,7 +5,7 @@ int ArduboyEeprom::begin(unsigned int start, uint16_t userID, uint8_t sketchID, 
   eeLength = length;
 
   // check bounds
-  if (eeStart < ARDUBOY_EEPROM_RESERVED) {
+  if (start < ARDUBOY_EEPROM_RESERVED) {
     return EEPROM_ERROR_ALLOCATE;
   }
   if ((eeStart + eeLength) >= ARDUBOY_EEPROM_SIZE) {
